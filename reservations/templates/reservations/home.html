@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main>
+        <h1>My Reservations</h1>
+        <a href="{% url 'create_reservation' %}">Make a new reservation</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            {% for reservation in reservations %}
+            <tbody>
+                <tr>
+                    <td>{{ reservation.building_num }} {{ reservation.street }} {{ reservation.apt_num }}</td>
+                    <td>{{ reservation.service_date|date:"m-d-Y" }}</td>
+                    <td>{{ reservation.service_time }}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </main>
+{% endblock content %}
