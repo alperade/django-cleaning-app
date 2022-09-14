@@ -1,3 +1,7 @@
-button:active{
-    background:olive;
+button:hover{
+    background-color: olive;
+}
+
+html {
+    background-color: #f2f7ff;
 }
