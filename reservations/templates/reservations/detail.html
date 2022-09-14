@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <div>
+        <p>Reservation by: {{ reservation.user }}</p1>
+        <p>Reserved on: {{ reservation.reserved_on }}</p1>
+        {% for time in times %}
+            <form method="post" action="{% url 'updated' reservation.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="service_time" value={{ time }}>
+            <button>{{ time }}</button>
+            </form>
+        {% endfor %}
+
+  </main>
+{% endblock content %}

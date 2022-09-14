@@ -15,7 +15,7 @@
             {% for reservation in reservations %}
             <tbody>
                 <tr>
-                    <td>{{ reservation.building_num }} {{ reservation.street }} {{ reservation.apt_num }}</td>
+                    <td><a href="{% url 'detail' reservation.pk %}">{{ reservation.building_num }} {{ reservation.street }} {{ reservation.apt_num }}</a></td>
                     <td>{{ reservation.service_date|date:"m-d-Y" }}</td>
                     <td>{{ reservation.service_time }}</td>
                 </tr>

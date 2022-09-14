@@ -5,22 +5,14 @@
     <div>
         <h1>New Reservation</h1>
 
-        <div>
-          <form method="get">
-              {% for time in service_times %}
-
-              <input type="submit" value="{{ time.time }}" name="{{ time.time }}">
-              {% endfor %}
-          </form>
-      </div>
-
         <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <div>
+         <div>
             <button class="button">Book</button>
         </div>
         </form>
+
     </div>
   </main>
 {% endblock content %}
