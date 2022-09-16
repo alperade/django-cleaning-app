@@ -7,10 +7,28 @@
 
         <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-         <div>
-            <button class="button">Book</button>
-        </div>
+        <table>
+          <tr>
+            <td>Building Number:</td>
+            <td><input type="text" name="building_num"></td>
+          </tr>
+          <tr>
+            <td>Street:</td>
+            <td><input type="text" name="street"></td>
+          </tr>
+          <tr>
+            <td>Apt Number:</td>
+            <td><input type="text" name="apt_num"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div>
+                <button class="button-book">Book</button>
+              </div>
+            </td>
+          </tr>
+        </table>
         </form>
 
     </div>

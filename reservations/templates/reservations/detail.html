@@ -5,13 +5,13 @@
     <div>
         <p>Reservation by: {{ reservation.user }}</p1>
         <p>Reserved on: {{ reservation.reserved_on }}</p1>
-        {% for time in times %}
-            <form method="post" action="{% url 'updated' reservation.id %}">
-            {% csrf_token %}
-            <input type="hidden" name="service_time" value={{ time }}>
-            <button>{{ time }}</button>
-            </form>
-        {% endfor %}
+        <h1>Reservation for:</h1>
+        <h1 class="coral-bck">{{ reservation.service_date_time }}</h1>
+    </div>
+    <h2><a href="{% url 'datetime' reservation.pk %}">Modify Date / Time</a></td>
+    <h2><a href="{% url 'reservation_delete' reservation.pk %}">Delete Reservation</a></td>
+
+
 
   </main>
 {% endblock content %}

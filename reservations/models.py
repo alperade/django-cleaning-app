@@ -9,12 +9,12 @@ class Reservation(models.Model):
     building_num = models.SmallIntegerField()
     street = models.CharField(max_length=100)
     apt_num = models.CharField(max_length=20)
-    service_date = models.DateField()
+    service_date_time = models.DateTimeField(null=True, blank=True)
     cleaner = models.ForeignKey("Cleaner",related_name="reservations",on_delete=models.CASCADE, null=True, blank=True)
     service_time = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
-        return f'Cleaning for {self.user} on {self.service_date} at {self.service_time} by {self.cleaner}'
+        return f'Cleaning for {self.user} on {self.service_date_time} by {self.cleaner}'
 
 class Cleaner(models.Model):
     first_name = models.CharField(max_length=20)
@@ -23,6 +23,3 @@ class Cleaner(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
-
-class Time(models.Model):
-    times = ["9AM", "10AM", "11AM"]

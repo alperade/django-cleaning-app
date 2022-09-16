@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <h1>Pick a time</h1>
+        <div class="asd">
+          {% for time in times %}
+          <div>
+            <form method="post" action="{% url 'updated' reservation.id %}">
+            {% csrf_token %}
+            <input type="hidden" name="date" value={{ time|date:'Y,m,d,H' }}>
+            <button class="button-16">{{ time }}</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+
+  </main>
+{% endblock content %}

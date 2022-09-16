@@ -3,24 +3,24 @@
 {% block content %}
     <main>
         <h1>My Reservations</h1>
-        <a href="{% url 'create_reservation' %}">Make a new reservation</a>
+        {% if reservations %}
         <table>
             <thead>
                 <tr>
                     <th>Address</th>
-                    <th>Date</th>
-                    <th>Time</th>
+                    <th>Reservation</th>
                 </tr>
             </thead>
-            {% for reservation in reservations %}
+            {% for reservation in reservations|dictsort:"service_date_time" %}
             <tbody>
-                <tr>
-                    <td><a href="{% url 'detail' reservation.pk %}">{{ reservation.building_num }} {{ reservation.street }} {{ reservation.apt_num }}</a></td>
-                    <td>{{ reservation.service_date|date:"m-d-Y" }}</td>
-                    <td>{{ reservation.service_time }}</td>
+                <tr class="button-book">
+                    <td><a href="{% url 'detail' reservation.pk %}">{{ reservation.building_num }} {{ reservation.street }} {{ reservation.apt_num }} </a></td>
+                    <td><a href="{% url 'detail' reservation.pk %}">{{ reservation.service_date_time|date:"N j" }} at {{ reservation.service_date_time|date:"g a" }} </a></td>
                 </tr>
             </tbody>
             {% endfor %}
         </table>
+        {% endif %}
+        <h2><a href="{% url 'create_reservation' %}">+ Make a new reservation</a><h2>
     </main>
 {% endblock content %}
