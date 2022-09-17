@@ -8,7 +8,7 @@
         <h1>Reservation for:</h1>
         <h1 class="coral-bck">{{ reservation.service_date_time }}</h1>
     </div>
-    <h2><a href="{% url 'datetime' reservation.pk %}">Modify Date / Time</a></td>
+    <h2><a href="{% url 'date_pick' reservation.pk %}">Modify Date / Time</a></td>
     <h2><a href="{% url 'reservation_delete' reservation.pk %}">Delete Reservation</a></td>
 
 

@@ -3,13 +3,13 @@
 {% block content %}
   <main>
     <h1>Pick a time</h1>
-        <div class="asd">
+        <div>
           {% for time in times %}
           <div>
-            <form method="post" action="{% url 'updated' reservation.id %}">
+            <form method="post" action="{% url 'update_time' reservation.id %}">
             {% csrf_token %}
-            <input type="hidden" name="date" value={{ time|date:'Y,m,d,H' }}>
-            <button class="button-16">{{ time }}</button>
+            <input type="hidden" name="time" value={{ time|date:'Y,m,d,H' }}>
+            <button class="button-picker">{{ time|date:'g A' }}</button>
             </form>
           </div>
           {% endfor %}
