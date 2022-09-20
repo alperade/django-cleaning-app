@@ -16,4 +16,4 @@ class ReservationDeleteForm(forms.ModelForm):
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ["service_date_time", "service_time"]
+        fields = ["service_date_time"]

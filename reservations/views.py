@@ -1,21 +1,38 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
 from reservations.models import Reservation, Address
 from django.contrib.auth.decorators import login_required
 from reservations.forms import AddressForm, ReservationDeleteForm, ReservationForm
 from datetime import datetime, timedelta
 import pandas as pd
+from django.utils import timezone
 
 
 # Create your views here.
 @login_required
 def ReservationListView(request):
+    startdate = datetime.today()
+    enddate = startdate + timedelta(days=14)
     if request.method == "GET":
         print(request.GET)
-    context = {"reservations": Reservation.objects.filter(user=request.user),
+    context = {"reservations": Reservation.objects.filter(user=request.user, service_date_time__range=[startdate,enddate]),
     "address": Address.objects.filter(user=request.user).last()
     }
 
     return render(request, "reservations/home.html", context)
+
+@login_required
+def PastReservationListView(request):
+    enddate = datetime.today()
+    startdate = enddate - timedelta(days=365)
+    if request.method == "GET":
+        print(request.GET)
+    context = {"reservations": Reservation.objects.filter(user=request.user, service_date_time__range=[startdate,enddate]),
+    "address": Address.objects.filter(user=request.user).last()
+    }
+
+    return render(request, "reservations/past.html", context)
+
 
 @login_required
 def AddressCreateView(request):
@@ -40,7 +57,11 @@ def AddressCreateView(request):
 
 @login_required
 def ReservationDetailView(request, pk):
-    context = {"reservation": Reservation.objects.filter(user=request.user).get(pk=pk)}
+    past = False
+    res_date = Reservation.objects.filter(user=request.user).get(pk=pk).service_date_time
+    if res_date < (timezone.now() + timedelta(days=1)):
+        past = True
+    context = {"reservation": Reservation.objects.filter(user=request.user).get(pk=pk), "past": past}
 
     return render(request, "reservations/detail.html", context)
 
@@ -158,6 +179,7 @@ def ReservationTimeUpdateView(request, pk):
         day = plan.service_date_time.day
         plan.service_date_time = datetime(year,month,day,int(list_date[3]),0)
         plan.save()
+        return redirect("home")
 
     context = {"reservations": Reservation.objects.filter(user=request.user)}
 

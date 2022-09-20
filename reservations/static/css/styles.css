@@ -28,10 +28,11 @@ table {
 }
 
 td {
-    padding: 0 1vw 2vh 0;
+    padding: 0 2vw 2vh 0;
     text-align: left;
     color: darkslategrey;
     width: fit-content;
+    vertical-align: top;
 }
 
 th {
@@ -76,7 +77,7 @@ th {
     display: none;
   }
 
-.table-address {
+.address-update {
     background-color: coral;
 }
 
@@ -88,6 +89,6 @@ th {
     display: inline-block;
 }
 
-.table-reservations {
+.wrapper-address {
     font-size: larger;
 }

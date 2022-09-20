@@ -2,6 +2,7 @@ from django.urls import path
 
 from reservations.views import (
     ReservationListView,
+    PastReservationListView,
     AddressCreateView,
     ReservationCreateView,
     NewReservationPickDateView,
@@ -15,6 +16,7 @@ from reservations.views import (
 
 urlpatterns = [
     path("", ReservationListView, name="home"),
+    path("past_res", PastReservationListView, name="past"),
     path("add_address/", AddressCreateView, name="add_address"),
     path("new_reservation/", ReservationCreateView, name="new_reservation"),
     path("pick_date/", NewReservationPickDateView, name="new_date_pick"),

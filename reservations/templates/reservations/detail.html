@@ -9,8 +9,11 @@
         <h1>Reservation for:</h1>
         <h1 class="coral-bck">{{ reservation.service_date_time }}</h1>
     </div>
+    {% if past %}
+    {% else %}
     <h2><a href="{% url 'date_pick' reservation.pk %}">Modify Date / Time</a></td>
     <h2><a href="{% url 'reservation_delete' reservation.pk %}">Delete Reservation</a></td>
+    {% endif %}
 
 
 

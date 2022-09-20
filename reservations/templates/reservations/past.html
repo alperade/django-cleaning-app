@@ -12,20 +12,17 @@
                 </tr>
             </table>
         </div>
-        <h1>My Reservations</h1>
+        <h1>Past Reservations</h1>
         {% if reservations %}
         <table>
             {% for reservation in reservations|dictsort:"service_date_time" %}
             <tr class="wrapper-address">
                 <td><a href="{% url 'detail' reservation.pk %}">{{ reservation.service_date_time|date:"N j" }} at {{ reservation.service_date_time|date:"g a" }}</a></td>
-                <td><a class="button" href="{% url 'date_pick' reservation.pk %}">Update</a></td>
-                <td><a class="button" href="{% url 'reservation_delete' reservation.pk %}">Delete</a></td>
             </tr>
             {% endfor %}
         </table>
         {% endif %}
         <h2><a href="{% url 'new_date_pick' %}">+ Make a new reservation</a><h2>
-        <h4><a href="{% url 'past' %}">Past Reservations</a></h4>
         {% else %}
         <h2><a href="{% url 'add_address' %}">+ Add home address</a><h2>
         {% endif %}

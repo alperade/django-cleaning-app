@@ -8,8 +8,7 @@ class Reservation(models.Model):
     reserved_on = models.DateTimeField(auto_now_add=True)
     service_date_time = models.DateTimeField(null=True, blank=True)
     cleaner = models.ForeignKey("Cleaner",related_name="reservations",on_delete=models.CASCADE, null=True, blank=True)
-    service_time = models.CharField(max_length=20, blank=True, null=True)
-    address = models.ForeignKey("Address",related_name="reservations",on_delete=models.PROTECT, null=True)
+    address = models.ForeignKey("Address",related_name="reservations",on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return f'Cleaning for {self.user} on {self.service_date_time} by {self.cleaner}'
