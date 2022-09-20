@@ -117,7 +117,7 @@ USE_I18N = True
 USE_TZ = True
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://hemant-to-do.herokuapp.com'
+    'https://cleaning-app-take-1.herokuapp.com/'
 ]
 
 # Static files (CSS, JavaScript, Images)
