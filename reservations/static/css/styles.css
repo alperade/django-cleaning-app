@@ -28,9 +28,10 @@ table {
 }
 
 td {
-    padding: 0 5vw 2vh 0;
+    padding: 0 1vw 2vh 0;
     text-align: left;
     color: darkslategrey;
+    width: fit-content;
 }
 
 th {
@@ -69,4 +70,24 @@ th {
 
 .button-picker:hover {
     background-color: coral;
+}
+
+.button {
+    display: none;
+  }
+
+.table-address {
+    background-color: coral;
+}
+
+.wrapper-address:hover .address-update {
+    background-color: coral;
+}
+
+.wrapper-address:hover .button {
+    display: inline-block;
+}
+
+.table-reservations {
+    font-size: larger;
 }

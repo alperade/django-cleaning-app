@@ -2,25 +2,34 @@
 
 {% block content %}
     <main>
+        <div class="wrapper-address">
+            {% if address %}
+            <table class="table-address">
+                <tr>
+                    <td><h3>Your address:</h3></td>
+                    <td><h3 class="address-update">{{ address }}</h3></td>
+                    <td><a class="button" href="{% url 'add_address' %}">Update Address</a></td>
+                </tr>
+            </table>
+            {% else %}
+            <h2><a href="{% url 'add_address' %}">+ Add home address</a><h2>
+            {% endif %}
+        </div>
         <h1>My Reservations</h1>
         {% if reservations %}
+        <div class="wrapper-address">
         <table>
-            <thead>
-                <tr>
-                    <th>Address</th>
-                    <th>Reservation</th>
-                </tr>
-            </thead>
             {% for reservation in reservations|dictsort:"service_date_time" %}
-            <tbody>
-                <tr class="button-book">
-                    <td><a href="{% url 'detail' reservation.pk %}">{{ reservation.building_num }} {{ reservation.street }} {{ reservation.apt_num }} </a></td>
-                    <td><a href="{% url 'detail' reservation.pk %}">{{ reservation.service_date_time|date:"N j" }} at {{ reservation.service_date_time|date:"g a" }} </a></td>
-                </tr>
-            </tbody>
+            <tr class="table-reservations">
+                <td><a href="{% url 'detail' reservation.pk %}" class="address-update">{{ reservation.service_date_time|date:"N j" }} at {{ reservation.service_date_time|date:"g a" }}</a></td>
+                <td><a class="button" href="{% url 'date_pick' reservation.pk %}">Update</a></td>
+                <td><a class="button" href="{% url 'reservation_delete' reservation.pk %}">Delete</a></td>
+            </tr>
             {% endfor %}
         </table>
+        </div>
         {% endif %}
-        <h2><a href="{% url 'create_reservation' %}">+ Make a new reservation</a><h2>
+
+        <h2><a href="{% url 'new_date_pick' %}">+ Make a new reservation</a><h2>
     </main>
 {% endblock content %}

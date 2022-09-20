@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <main>
+    <h1>New Reservation</h1>
+    <h2>Pick a date</h2>
+        <div>
+          {% for date in dates %}
+          <div>
+            <form method="post" action="{% url 'new_reservation' %}">
+            {% csrf_token %}
+            <input type="hidden" name="date" value={{ date|date:'Y,m,d,H' }}>
+            <button class="button-picker">{{ date|date:'M, d' }}</button>
+            </form>
+          </div>
+          {% endfor %}
+        </div>
+
+  </main>
+{% endblock content %}

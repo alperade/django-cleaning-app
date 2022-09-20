@@ -2,7 +2,9 @@ from django.urls import path
 
 from reservations.views import (
     ReservationListView,
+    AddressCreateView,
     ReservationCreateView,
+    NewReservationPickDateView,
     ReservationDetailView,
     ReservationDeleteView,
     ReservationDateUpdateView,
@@ -13,7 +15,9 @@ from reservations.views import (
 
 urlpatterns = [
     path("", ReservationListView, name="home"),
-    path("create/", ReservationCreateView, name="create_reservation"),
+    path("add_address/", AddressCreateView, name="add_address"),
+    path("new_reservation/", ReservationCreateView, name="new_reservation"),
+    path("pick_date/", NewReservationPickDateView, name="new_date_pick"),
     path("<int:pk>/detail", ReservationDetailView, name="detail"),
     path("<int:pk>/delete/", ReservationDeleteView, name="reservation_delete"),
     path("<int:pk>/update_date/", ReservationDateUpdateView, name="update_date"),

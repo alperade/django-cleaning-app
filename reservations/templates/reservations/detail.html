@@ -3,8 +3,9 @@
 {% block content %}
   <main>
     <div>
-        <p>Reservation by: {{ reservation.user }}</p1>
-        <p>Reserved on: {{ reservation.reserved_on }}</p1>
+        <p>Reservation by: {{ reservation.user }}</p>
+        <p>Reserved on: {{ reservation.reserved_on }}</p>
+        <p>Address: {{ reservation.address }}</p>
         <h1>Reservation for:</h1>
         <h1 class="coral-bck">{{ reservation.service_date_time }}</h1>
     </div>
