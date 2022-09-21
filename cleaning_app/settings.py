@@ -24,9 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-j3djv&qgwud&j!8tcn2hc8%5#q(cm_7)dnh_!13y4)&li!rlj8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://cleaning-app-take-1.herokuapp.com/'
+]
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
@@ -130,7 +134,3 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 django_heroku.settings(locals())
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://cleaning-app-take-1.herokuapp.com/'
-]
