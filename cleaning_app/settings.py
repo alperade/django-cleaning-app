@@ -32,6 +32,20 @@ CSRF_TRUSTED_ORIGINS = [
     'https://cleaning-app-take-1.herokuapp.com/'
 ]
 
+ALLOWED_HOSTS = []
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+CORS_REPLACE_HTTPS_REFERER = True
+
+CSRF_COOKIE_DOMAIN = 'herokuapp.com'
+
+
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
 
